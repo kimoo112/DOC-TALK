@@ -1,22 +1,21 @@
-
 import 'package:flutter/material.dart';
 
 import '../../helpers/app_colors.dart';
 
 class ChildlinearProgressWidget extends StatelessWidget {
   const ChildlinearProgressWidget({
-    super.key,
+    super.key, required this.value,
   });
-
+  final double value;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
-          width: 170,
+          width: 140,
           child: LinearProgressIndicator(
-            color: AppColors.primaryColor.withOpacity(.3),
-            value: .0,
+            color: AppColors.primaryColor,
+            value: value,
             minHeight: 5,
             borderRadius: BorderRadius.circular(8),
           ),

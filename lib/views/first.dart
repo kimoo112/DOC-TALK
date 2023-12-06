@@ -3,6 +3,7 @@ import 'package:doc_talk/views/widgets/custom_button.dart';
 import 'package:doc_talk/views/widgets/date_of_birth_drop_down.dart';
 import 'package:flutter/material.dart';
 
+import 'second.dart';
 import 'widgets/child_linear_progress.dart';
 import 'widgets/custom_text_field.dart';
 import 'widgets/parent_linear_progress.dart';
@@ -32,24 +33,27 @@ class First extends StatelessWidget {
           ),
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(8.0),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ParentLinearProgress(
                   label: "Parent info",
+                  value:.50
                 ),
-                ChildlinearProgressWidget(),
+                ChildlinearProgressWidget(
+                  value: 0,
+                ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 44,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 CircleAvatar(
@@ -64,27 +68,34 @@ class First extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 44,
             ),
-            Text(
+            const Text(
               'Father /Mother name',
               style: TextStyle(fontWeight: FontWeight.w600),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            CustomTextField(
+            const CustomTextField(
               hintText: 'Enter Name here',
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            DateOfBirthSelector(),
-            SizedBox(
+            const DateOfBirthSelector(),
+            const SizedBox(
               height: 40,
             ),
-            CustomButton(),
+            CustomButton(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Second()),
+                );
+              },
+            ),
           ],
         ),
       ),
