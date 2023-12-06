@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../helpers/app_colors.dart';
+import '../../helpers/size.dart';
 
 class ParentLinearProgress extends StatelessWidget {
   const ParentLinearProgress({
@@ -14,7 +15,7 @@ class ParentLinearProgress extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          width: 140,
+          width: mQWidth(context)/2.7,
           child: LinearProgressIndicator(
             color: AppColors.primaryColor,
             value: value,

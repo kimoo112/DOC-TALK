@@ -13,6 +13,8 @@ class First extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -41,10 +43,7 @@ class First extends StatelessWidget {
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ParentLinearProgress(
-                  label: "Parent info",
-                  value:.50
-                ),
+                ParentLinearProgress(label: "Parent info", value: .50),
                 ChildlinearProgressWidget(
                   value: 0,
                 ),
@@ -78,8 +77,11 @@ class First extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const CustomTextField(
-              hintText: 'Enter Name here',
+            Form(
+              key: formKey,
+              child: const CustomTextField(
+                hintText: 'Enter Name here',
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -90,10 +92,12 @@ class First extends StatelessWidget {
             ),
             CustomButton(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Second()),
-                );
+                if (formKey.currentState!.validate()) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Second()),
+                  );
+                }
               },
             ),
           ],
