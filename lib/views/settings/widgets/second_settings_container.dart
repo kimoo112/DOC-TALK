@@ -3,11 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SecondSettingsContainer extends StatelessWidget {
+class SecondSettingsContainer extends StatefulWidget {
   const SecondSettingsContainer({
     super.key,
   });
 
+  @override
+  State<SecondSettingsContainer> createState() =>
+      _SecondSettingsContainerState();
+}
+
+class _SecondSettingsContainerState extends State<SecondSettingsContainer> {
+  bool isAllowed = true;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,10 +35,15 @@ class SecondSettingsContainer extends StatelessWidget {
               child: Switch(
                 activeColor: AppColors.primaryColor,
                 activeTrackColor: Colors.white,
-                trackOutlineColor:
-                    const MaterialStatePropertyAll(AppColors.primaryColor),
-                value: true,
-                onChanged: (bool value) {},
+                trackOutlineColor: isAllowed
+                    ? const MaterialStatePropertyAll(AppColors.primaryColor)
+                    : MaterialStatePropertyAll(
+                        AppColors.blackColor.withOpacity(.5)),
+                value: isAllowed,
+                onChanged: (bool value) {
+                  isAllowed = !isAllowed;
+                  setState(() {});
+                },
               ),
             ),
           ),
