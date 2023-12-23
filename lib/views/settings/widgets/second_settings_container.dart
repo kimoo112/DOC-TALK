@@ -23,9 +23,16 @@ class SecondSettingsContainer extends StatelessWidget {
               color: AppColors.musicBG,
             ),
             title: const Text('Background Music'),
-            trailing: IconButton(
-              onPressed: () {},
-              icon: const Icon(CupertinoIcons.right_chevron),
+            trailing: Transform.scale(
+              scale: 1.sp,
+              child: Switch(
+                activeColor: AppColors.primaryColor,
+                activeTrackColor: Colors.white,
+                trackOutlineColor:
+                    const MaterialStatePropertyAll(AppColors.primaryColor),
+                value: true,
+                onChanged: (bool value) {},
+              ),
             ),
           ),
           Divider(
@@ -33,7 +40,7 @@ class SecondSettingsContainer extends StatelessWidget {
             indent: 30.w,
           ),
           ListTile(
-             leading: const Icon(
+            leading: const Icon(
               CupertinoIcons.person_fill,
               color: AppColors.accountIcon,
             ),
@@ -48,7 +55,7 @@ class SecondSettingsContainer extends StatelessWidget {
             indent: 30.w,
           ),
           ListTile(
-              leading: const Icon(
+            leading: const Icon(
               CupertinoIcons.bell_fill,
               color: AppColors.notificationIcon,
             ),
